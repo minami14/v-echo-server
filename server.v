@@ -9,12 +9,15 @@ fn main() {
       println(err)
       continue
     }
+    go serve(s)
+  }
+}
 
-    buf, n := s.recv(1024)
-    line := tos(buf, n)
-    println(line)
-    s.send(buf, n) or {
-      println(err)
-    }
+fn serve(sock net.Socket) {
+  buf, n := s.recv(1024)
+  line := tos(buf, n)
+  println(line)
+  s.send(buf, n) or {
+    println(err)
   }
 }
