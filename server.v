@@ -3,10 +3,7 @@ module main
 import net
 
 fn main() {
-  sock := net.listen(1234) or {
-    panic(err)
-  }
-
+  sock := net.listen(1234)?
   for {
     s := sock.accept() or {
       println(err)
